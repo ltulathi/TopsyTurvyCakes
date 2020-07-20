@@ -22,7 +22,17 @@
                 </ul>
                 <ul class="nav nav-pills">
                     <li>
+                        @if(!User.Identity.IsAuthenticated) { 
                         <a href="/Account/Login">Login</a>
+                        } else{
+                            <form method="post">
+                                <div class="input-group">
+                                    <span>@User.Identity.IsAuthenticated</span>
+                                    <button type="submit" class="btn btn-link">Logout</button>
+                                </div>
+
+                            </form>
+                        }
                     </li>
                 </ul>
             </nav>
@@ -35,20 +45,21 @@
     <div class="container">
 
         <div class="row recipes">
-
+            @foreach (var recipe in new[] { "Birthday Cake for Fido", "Pumpkin Pie", "Apple Pie" })
+            {
             <div class="recipe col-md-4">
                 <img class="img img-thumbnail" src="http://topsyturvycakedesign.com/birthday-cake-for-fido/" />
-                <h3><a href="/Recipe">Birthday Cake for Fido</a></h3>
+                <h3><a href="/Recipe">@recipe</a></h3>
                 <p>Treat your puppy to a delicious birthday treat!</p>
             </div>
-
+            }
         </div>
 
     </div>
 
     <footer>
         <div class="text-center">
-            <span class="text-muted">Last Rendered:  </span>
+            <span class="text-muted">Last Rendered: @DateTime.Now by Linda </span>
         </div>
     </footer>
 </body>
