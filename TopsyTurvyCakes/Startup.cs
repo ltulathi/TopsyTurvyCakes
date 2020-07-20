@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TopsyTurvyCakes.Models;
 
 namespace TopsyTurvyCakes
 {
@@ -17,6 +18,9 @@ namespace TopsyTurvyCakes
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            //tells ASP to create new instance of class every time an instance of IRecipesService is requested
+            services.AddTransient<IRecipesService, RecipesService>();
 
             services.AddMvc(option => option.EnableEndpointRouting = false);
 

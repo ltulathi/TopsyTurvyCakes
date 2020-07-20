@@ -1,8 +1,9 @@
-﻿@page "{id}" 
+﻿@page "{id}"
+
 @{
-    var id =long.Parse((string)RouteData.Values["id"]);
+    var id = long.Parse((string)RouteData.Values["id"]);
     var recipesService = new RecipesService();
-    var recipe = await recipesService.FindAsync(id);
+    var recipe = await RecipesService.FindAsync(id);
 
     ViewData["Title"] = recipe.Name;
 }
@@ -24,7 +25,7 @@
             <h4>Ingredients</h4>
             <ul>
                 @foreach (var ingredient in recipe.IngredientsList)
-                { 
+                {
                     <li>@ingredient</li>
                 }
 
@@ -51,4 +52,3 @@
     </div>
 
 </div>
-            
