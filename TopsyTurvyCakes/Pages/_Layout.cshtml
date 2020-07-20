@@ -45,8 +45,8 @@
             @if (IsSectionDefined("Title"))
             {
                 @RenderSection("Title", false)
-            } else{
-            <h2 class="title">The Best Cakes Around!</h2>
+            } else {
+            <h2 class="title">@ViewData["Title"]</h2>
             }
         </div>
     </header>
