@@ -45,12 +45,12 @@
     <div class="container">
 
         <div class="row recipes">
-            @foreach (var recipe in new[] { "Birthday Cake for Fido", "Pumpkin Pie", "Apple Pie" })
+            @foreach (var recipe in new TopsyTurvyCakes.Models.RecipesService().GetAll())
             {
             <div class="recipe col-md-4">
-                <img class="img img-thumbnail" src="http://topsyturvycakedesign.com/birthday-cake-for-fido/" />
-                <h3><a href="/Recipe">@recipe</a></h3>
-                <p>Treat your puppy to a delicious birthday treat!</p>
+                <img class="img img-thumbnail" src="@recipe.GetInlineImageSrc()" />
+                <h3><a href="/Recipe">@recipe.Name</a></h3>
+                <p>@recipe.Description</p>
             </div>
             }
         </div>
