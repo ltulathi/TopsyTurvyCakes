@@ -41,7 +41,13 @@
             </nav>
         </div>
         <div class="row">
-            <h2 class="title">My Favorite Recipes</h2>
+            <!-- false indicates the Section is not Required-->
+            @if (IsSectionDefined("Title"))
+            {
+                @RenderSection("Title", false)
+            } else{
+            <h2 class="title">The Best Cakes Around!</h2>
+            }
         </div>
     </header>
 
