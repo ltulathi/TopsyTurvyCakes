@@ -30,5 +30,10 @@ namespace TopsyTurvyCakes.Pages.Admin
         {
             Recipe = await recipesService.FindAsync(Id.GetValueOrDefault()) ?? new Recipe();
         }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            return RedirectToPage("/Recipe", new { id = Id });
+        }
     }
 }
