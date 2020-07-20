@@ -10,6 +10,8 @@ namespace TopsyTurvyCakes.Pages.Admin
 {
     public class AddEditRecipeModel : PageModel
     {
+        private readonly IRecipesService recipesService;
+
         [FromRoute]  //nullable long because it is optional
         public long? Id { get; set; }
 
@@ -19,9 +21,14 @@ namespace TopsyTurvyCakes.Pages.Admin
         }
 
         public Recipe Recipe { get; set; }
+       
+        public AddEditRecipeModel(IRecipesService recipesService)
+        {
+            this.recipesService = recipesService;
+        }
         public void OnGet()
         {
-
+            Recipe = recipesService.Find(Id.GetValueOrDefault()) ?? new Recipe();
         }
     }
 }
