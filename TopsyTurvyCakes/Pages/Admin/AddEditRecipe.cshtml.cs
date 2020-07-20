@@ -26,9 +26,9 @@ namespace TopsyTurvyCakes.Pages.Admin
         {
             this.recipesService = recipesService;
         }
-        public void OnGet()
+        public async Task OnGet()
         {
-            Recipe = recipesService.Find(Id.GetValueOrDefault()) ?? new Recipe();
+            Recipe = await recipesService.FindAsync(Id.GetValueOrDefault()) ?? new Recipe();
         }
     }
 }
