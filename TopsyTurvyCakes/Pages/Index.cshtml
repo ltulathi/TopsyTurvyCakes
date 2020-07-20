@@ -2,7 +2,6 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @using TopsyTurvyCakes.Models
 @{
-    Layout = "_Layout";
     var recipesService = new RecipesService();
     var recipes = await recipesService.GetAllAsync();
 }
