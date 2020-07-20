@@ -30,13 +30,15 @@ namespace TopsyTurvyCakes
                 app.UseDeveloperExceptionPage();
             }
 
+
+            app.UseStaticFiles();
             app.UseMvc(routes =>
             {
                 routes.MapRoute("Default",
                     "{controller=Home}/{action=Index}/{id?}"
                     );
             });
-
+            /*
             app.UseFileServer();
             
             app.UseRouting();
@@ -48,6 +50,7 @@ namespace TopsyTurvyCakes
                     await context.Response.WriteAsync("Hello World!");
                 });
             });
+            */
             
         }
     }
