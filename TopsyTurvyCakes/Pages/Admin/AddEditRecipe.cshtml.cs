@@ -19,7 +19,10 @@ namespace TopsyTurvyCakes.Pages.Admin
         {
             get { return Id == null; }
         }
-
+        //auto bind, With this property razor pages will iterate to match
+        //name of each property with the value of the request. The key is to
+        //make the names and fields match
+        [BindProperty]
         public Recipe Recipe { get; set; }
        
         public AddEditRecipeModel(IRecipesService recipesService)
@@ -33,6 +36,8 @@ namespace TopsyTurvyCakes.Pages.Admin
 
         public async Task<IActionResult> OnPostAsync()
         {
+            Recipe.Id = Id.GetValueOrDefault();
+            await recipesService.SaveAsync(Recipe);
             return RedirectToPage("/Recipe", new { id = Id });
         }
     }
