@@ -40,5 +40,11 @@ namespace TopsyTurvyCakes.Pages.Admin
             await recipesService.SaveAsync(Recipe);
             return RedirectToPage("/Recipe", new { id = Id });
         }
+
+        public async Task<IActionResult> OnPostDelete()
+        {
+            await recipesService.DeleteAsync(Id.Value);
+                return RedirectToPage("/Index");
+        }
     }
 }
